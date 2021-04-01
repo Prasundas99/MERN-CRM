@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 
@@ -13,6 +13,6 @@ var customertableSchema = new Schema({
 });
 
 //create model for client
-var customer = mongoose.model("customer", customertableSchema)
+var Customer = mongoose.model("Customer", customertableSchema)
 
-module.exports = customer;
+export default Customer;

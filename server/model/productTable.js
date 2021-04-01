@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+
 
 
 //model Product
@@ -14,6 +15,6 @@ var producttableSchema = new Schema({
 });
 
 //create model for Product
-var product = mongoose.model("product", producttableSchema)
+var Product = mongoose.model("product", producttableSchema)
 
-module.exports = product;
+export default Product;

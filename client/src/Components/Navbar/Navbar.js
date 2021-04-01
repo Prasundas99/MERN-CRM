@@ -84,12 +84,6 @@ export default function Navbar() {
           <List>
             <ListItem >
                 <ListItemText>
-                    <Typography align='center' variant='h6'>  <Link to = "/Profile" style={{ textDecoration: 'none' }}>Profile</Link></Typography>    
-                </ListItemText>
-            </ListItem>
-
-            <ListItem >
-                <ListItemText>
                     <Typography align='center' variant='h6'> <Link to = "/ProductList" style={{ textDecoration: 'none' }}>Product List</Link></Typography>    
                 </ListItemText>
             </ListItem>
