@@ -1,12 +1,10 @@
-import mongoose from "mongoose";
-
-import  Product  from "../model/productTable.js";
+import  product  from "../model/productTable.js";
 
 
 //Read
 export const getProduct = async (req, res) => {
   try {
-    const Product = await Product.find();
+    const Product = await product.find();
     res.status(200).json(Product);
   } catch (error) {
     console.log(error);
@@ -19,7 +17,7 @@ export const getProduct = async (req, res) => {
 export const createProduct = async (req, res) => {
   const Product = req.body;
   console.log(Product);
-  const newProduct = new Product(Product);
+  const newProduct = new product(Product);
   try {
     await newProduct.save();
     res.status(201).send(newProduct);
@@ -34,10 +32,9 @@ export const updateProduct = async (req, res) => {
   const { id: _id } = req.params;
   const Product = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(_id))
-    res.status(404).send({ message: "no such Message found" });
 
-  const updatedProduct = await Product.findByIdAndUpdate(
+
+  const updatedProduct = await product.findByIdAndUpdate(
     _id,
     { ...Product, _id },
     { new: true }
@@ -50,11 +47,9 @@ export const updateProduct = async (req, res) => {
 //Delete
 export const deleteProduct = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id))
-    res.status(404).send({ message: "Product file not found" });
 
   try {
-    await Product.findByIdAndDelete(id);
+    await product.findByIdAndDelete(id);
     res.status(200).send({ message: "Deletion of Product user succesful" });
   } catch (error) {
     console.log("error");
