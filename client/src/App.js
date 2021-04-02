@@ -30,11 +30,6 @@ function App() {
             <Route exact path="/">
               <Home />        
             </Route>
-            
-            <Route exact path="/Profile">
-                    
-            </Route>
-
             <Route exact path="/ProductList">
                 <ProductScreen />     
             </Route>
