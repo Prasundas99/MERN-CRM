@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import  Allocation  from "../model/CustomerProduct.js";
+import  allocation  from "../model/CustomerProduct.js";
 
 
 //Read
 export const getAllocation = async (req, res) => {
   try {
-    const Allocation = await Allocation.find().poppulate("Customer").poppulate("product");
+    const Allocation = await allocation.find().poppulate("Customer").poppulate("product");
     res.status(200).json(Allocation);
   } catch (error) {
     console.log(error);
@@ -18,7 +18,7 @@ export const getAllocation = async (req, res) => {
 export const createAllocation = async (req, res) => {
   const Allocation = req.body;
   console.log(Allocation);
-  const newAllocation = new Allocation({
+  const newAllocation = new allocation({
       Customer: req.body.CustomerId,
       Product: req.body.productId
   });
@@ -36,10 +36,8 @@ export const updateAllocation = async (req, res) => {
   const { id: _id } = req.params;
   const Allocation = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(_id))
-    res.status(404).send({ message: "no such Message found" });
 
-  const updatedAllocation = await Allocation.findByIdAndUpdate(
+  const updatedAllocation = await allocation.findByIdAndUpdate(
     _id,
     { ...Allocation, _id },
     { new: true }
@@ -56,7 +54,7 @@ export const deleteAllocation = async (req, res) => {
     res.status(404).send({ message: "Allocation file not found" });
 
   try {
-    await Allocation.findByIdAndDelete(id);
+    await allocation.findByIdAndDelete(id);
     res.status(200).send({ message: "Deletion of Allocation user succesful" });
   } catch (error) {
     console.log("error");

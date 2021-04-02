@@ -1,12 +1,9 @@
-import mongoose from "mongoose";
-
-import  Customer  from "../model/customerTable.js";
-
+import  customer  from "../model/customerTable.js";
 
 //Read
 export const getCustomer = async (req, res) => {
   try {
-    const Customer = await Customer.find();
+    const Customer = await customer.find();
     res.status(200).json(Customer);
   } catch (error) {
     console.log(error);
@@ -18,8 +15,7 @@ export const getCustomer = async (req, res) => {
 //Create
 export const createCustomer = async (req, res) => {
   const Customer = req.body;
-  console.log(Customer);
-  const newCustomer = new Customer(Customer);
+  const newCustomer = new customer(Customer);
   try {
     await newCustomer.save();
     res.status(201).send(newCustomer);
@@ -34,10 +30,7 @@ export const updateCustomer = async (req, res) => {
   const { id: _id } = req.params;
   const Customer = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(_id))
-    res.status(404).send({ message: "no such Message found" });
-
-  const updatedCustomer = await Customer.findByIdAndUpdate(
+  const updatedCustomer = await customer.findByIdAndUpdate(
     _id,
     { ...Customer, _id },
     { new: true }
@@ -50,11 +43,8 @@ export const updateCustomer = async (req, res) => {
 //Delete
 export const deleteCustomer = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id))
-    res.status(404).send({ message: "Customer file not found" });
-
-  try {
-    await Customer.findByIdAndDelete(id);
+    try {
+    await customer.findByIdAndDelete(id);
     res.status(200).send({ message: "Deletion of Customer user succesful" });
   } catch (error) {
     console.log("error");
