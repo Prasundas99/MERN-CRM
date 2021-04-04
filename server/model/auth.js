@@ -29,4 +29,4 @@ userSchema.pre("save", async function (next) {
 });
 
 const Auth = mongoose.model("User", userSchema);
-export default  Auth ;
+export default Auth;

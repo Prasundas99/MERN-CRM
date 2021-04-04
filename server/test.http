@@ -1,0 +1,30 @@
+
+##################   FORGET PASSWORD   ########################
+
+
+########   register user  #############
+POST http://localhost:5000/user/signup
+Content-Type: application/json
+
+{
+    "name": "hello",
+    "email": "hello@gmail.com",
+    "password": "hello"
+}
+
+########   email verification  ##########
+POST http://localhost:5000/user/email-verify
+Content-Type: application/json
+
+{
+      "email": "hello@gmail.com"
+}
+
+
+########  reset password   #########
+POST http://localhost:5000/user/reset-password/5fd82c40-0bae-4442-8fef-630de800169a
+Content-Type: application/json
+
+{
+      "password": "user12345"
+}

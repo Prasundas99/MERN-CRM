@@ -4,10 +4,10 @@ import morgan from "morgan";
 //Router imports
 import CustomerRouter from "./routes/customerRoutes.js";
 import ProductRouter from "./routes/productRoute.js";
-import AllocationRoutes from './routes/allocationRoutes.js';
+import AllocationRoutes from "./routes/allocationRoutes.js";
+import AuthRoutes from "./routes/authRouter.js";
 
 import { NotFound, errorhandler } from "./middleware/errorHandling.js";
-
 
 import mongooseConnection from "./config/db.js";
 
@@ -27,14 +27,14 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(cors());
 
-
 //Routes
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-app.use("/Customer",CustomerRouter);
-app.use("/Product",ProductRouter);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+app.use("/Customer", CustomerRouter);
+app.use("/Product", ProductRouter);
 app.use("/Allocation", AllocationRoutes);
+app.use("/user", AuthRoutes);
 
 // error handling
 app.use(NotFound);

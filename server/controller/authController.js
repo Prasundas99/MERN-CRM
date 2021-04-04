@@ -1,5 +1,9 @@
 import Auth from "../model/auth.js";
 import { generateToken } from "../utils/generateToken.js";
+import { v4 as uuidv4 } from "uuid";
+import resetPasswordModel from "../model/resetPasswordModel.js";
+import resetPassword_mailer from "../mailers/forgetPassword_mailer.js";
+
 
 // @purpose: Register new user and get token
 // @route:   POST /register
@@ -50,5 +54,71 @@ export const loginUser = async (req, res, next) => {
     res.status(401);
     const err = new Error("Invalid email or password");
     next(err);
+  }
+};
+
+///   FORGET PASSWORD   ///
+
+export const emailVerification = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const user = await Auth.findOne({ email: email });
+    const accessToken = uuidv4();
+    const resetPassword = new resetPasswordModel({
+      user: user._id,
+      accessToken: accessToken,
+      isValid: true,
+    });
+
+    await resetPassword.save();
+
+    const resetPasswordReq = await resetPasswordModel
+      .findOne({ user: user._id })
+      .populate("user");
+    console.log(resetPasswordReq);
+    // Sending Mail
+    resetPassword_mailer(resetPasswordReq);
+
+    res.json({ accessToken: resetPassword.accessToken });
+  } catch (error) {
+    res.status(404);
+    next(error);
+  }
+};
+
+export const passwordReset = async (req, res, next) => {
+  const { password } = req.body;
+  try {
+    const resetPasswordToken = await resetPasswordModel.findOne({
+      accessToken: req.params.accessToken,
+    });
+
+    if (resetPasswordToken.isValid) {
+      const user = await (
+        await Auth.findOne({ _id: resetPasswordToken.user })
+      ).populate("User");
+      if (user) {
+        user.password = password;
+        user.save();
+        res.status(200);
+        res.json({
+          message: `${user.name} Password Reset successfully`,
+        });
+
+        // delete reset password token
+        await resetPasswordToken.deleteOne({ user: user._id });
+      } else {
+        res.status(404);
+        const err = new Error("User not Found");
+        next(err);
+      }
+    } else {
+      res.json({
+        message: `Token expired`,
+      });
+    }
+  } catch (error) {
+    res.status(404);
+    next(error);
   }
 };
