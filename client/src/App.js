@@ -1,5 +1,6 @@
 //React imports
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 
 //Utils
 import ScrollToTop from './Components/ScrollToTop';
@@ -24,10 +25,21 @@ import Allocation from "./screen/Forms/Create/Allocation";
 
 
 function App() {
-  
+
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: '"Segoe UI "',
+    },
+    palette: {
+      primary: { main: "#45289f" },
+      secondary: { main: "#fffafa" },
+    },
+  });
+
 
   
   return (
+    <MuiThemeProvider theme={theme}>
        <Router>
         <Nav />
         <ScrollToTop>
@@ -84,6 +96,7 @@ function App() {
           </Switch>
         </ScrollToTop>
       </Router>
+      </MuiThemeProvider>
   );
 }
 

@@ -33,8 +33,8 @@ function Customer() {
                         <Table className={classes.table} size='medium' aria-label="a dense table">
                             <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Product</TableCell>
+                                <TableCell><b>Name</b></TableCell>
+                                <TableCell> <b>Product</b> </TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>

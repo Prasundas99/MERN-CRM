@@ -29,20 +29,20 @@ function CustomerEntry() {
     const classes = useStyles();
     return (
         <div>
-            <Typography variant="h4" align='left'>Customers-Product Allocation</Typography>
-        <br />
+            <Typography variant="h4" align='left'>Customer Entry</Typography>
         <br />
         <Button variant="contained" color="primary">Add New</Button>
+        <br />
             <Paper elevation={3} className={classes.PaperCustomers}>
                    <TableContainer>
                         <Table className={classes.table} size='medium' aria-label="a dense table">
                             <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Address</TableCell>
-                                <TableCell>Phone no.</TableCell>
-                                <TableCell>GST</TableCell>
-                                <TableCell>PAN</TableCell>
+                                <TableCell> <b>Name </b> </TableCell>
+                                <TableCell> <b>Address </b> </TableCell>
+                                <TableCell><b>Phone no.</b></TableCell>
+                                <TableCell><b>GST</b> </TableCell>
+                                <TableCell><b>PAN </b> </TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>

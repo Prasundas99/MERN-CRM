@@ -1,7 +1,7 @@
 import { makeStyles} from '@material-ui/core/styles';
 
 //Variable used for drawer width
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 export const useStyles = makeStyles((theme) => ({
    
@@ -66,9 +66,10 @@ export const useStyles = makeStyles((theme) => ({
 
     moveRight: {
         marginTop: '1.1rem',
-        marginLeft: '70%',
+        marginLeft: '68%',
         float: 'right',
         position: 'absolute',
+        display: 'flex',
         
     }
   }));
