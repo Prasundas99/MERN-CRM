@@ -14,6 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import { Link } from 'react-router-dom';
 
@@ -39,7 +40,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       <CssBaseline />
       <AppBar
         
@@ -62,7 +63,7 @@ export default function Navbar() {
           </Typography>
         </Toolbar>
 
-        <Typography variant="body1" className={classes.moveRight}> Hello, Admin </Typography>
+        <Typography variant="body1" className={classes.moveRight}> <AccountCircleIcon /> . Hello, Admin </Typography>
       </AppBar>
       <Drawer
         className={classes.drawer}
@@ -73,24 +74,24 @@ export default function Navbar() {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
+        <div className={classes.drawerHeader} style={{ textDecoration: 'none', color: 'white', background: "rgb(101 78 176)" }}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Typography variant='h5' align='center' >CRM</Typography>
+        <Typography variant='h5' align='center' style={{ textDecoration: 'none', color: 'white', background: "rgb(101 78 176)", padding: "1rem" }} >CRM</Typography>
         <Divider />
         {/*..........................................List items list...........................................*/}
           <List>
             <ListItem >
                 <ListItemText>
-                    <Typography align='center' variant='h6'> <Link to = "/ProductList" style={{ textDecoration: 'none' }}>Product List</Link></Typography>    
+                    <Typography align='center' variant='h6'> <Link to = "/ProductList" style={{ textDecoration: 'none', color: 'black' }}>Product List</Link></Typography>    
                 </ListItemText>
             </ListItem>
 
             <ListItem >
                 <ListItemText>
-                    <Typography align='center' variant='h6'> <Link to = "/Allocation" style={{ textDecoration: 'none' }}>Customer Product <br /> Allocation </Link></Typography>    
+                    <Typography align='center' variant='h6'> <Link to = "/Allocation" style={{ textDecoration: 'none' , color: 'black'}}>Customer Product <br /> Allocation </Link></Typography>    
                 </ListItemText>
             </ListItem>
            </List>      
@@ -98,7 +99,7 @@ export default function Navbar() {
         <List>
             <ListItem >
                 <ListItemText>
-                <Link to = "/Admin" style={{ textDecoration: 'none' }}> <Typography variant='h6' align='center'>Admin</Typography> </Link>
+                <Link to = "/Admin" style={{ textDecoration: 'none', color: 'black' }}> <Typography variant='h6' align='center'>Admin</Typography> </Link>
                 </ListItemText>
             </ListItem>
            </List>  

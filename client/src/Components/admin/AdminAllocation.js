@@ -32,19 +32,18 @@ function AdminAllocation() {
     return (
         <div>
             <Typography variant="h4" align='left'>Customers-Product Allocation</Typography>
-        <br />
+        <br /> 
         <Button variant="contained" color="primary">Add New</Button>
-        <br />
+        <br /> <br />
             <Paper elevation={3} className={classes.PaperCustomers}>
                    <TableContainer>
                         <Table className={classes.table} size='medium' aria-label="a dense table">
                             <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Product</TableCell>
-                                
-                                <TableCell>Edit</TableCell>
-                                <TableCell>Delete</TableCell>
+                                <TableCell><b>Name </b></TableCell>
+                                <TableCell><b>Product</b> </TableCell>
+                                <TableCell><b>Edit </b> </TableCell>
+                                <TableCell><b>Delete </b> </TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>

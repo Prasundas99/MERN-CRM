@@ -33,11 +33,11 @@ function Product() {
                         <Table className={classes.table} size='medium' aria-label="a dense table">
                             <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Description</TableCell>
-                                <TableCell>Intro Date</TableCell>
-                                <TableCell>GST</TableCell>
-                                <TableCell>Inventory</TableCell>
+                                <TableCell><b>Name</b></TableCell>
+                                <TableCell><b>Description</b></TableCell>
+                                <TableCell><b>Intro Date </b></TableCell>
+                                <TableCell><b>GST </b></TableCell>
+                                <TableCell><b>Inventory</b></TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>

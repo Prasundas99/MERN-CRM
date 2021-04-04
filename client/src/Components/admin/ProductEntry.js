@@ -31,19 +31,19 @@ function ProductEntry() {
             <Typography variant="h4" align='left'>Products</Typography>
 
             <Button variant="contained" color="primary">Add New</Button>
-            <br />
+            <br /> <br />
             <Paper elevation={3} className={classes.PaperProducts}>
                    <TableContainer>
                         <Table className={classes.table} size='medium' aria-label="a dense table">
                             <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Description</TableCell>
-                                <TableCell>Intro Date</TableCell>
-                                <TableCell>GST</TableCell>
-                                <TableCell>Inventory</TableCell>
-                                <TableCell>Edit</TableCell>
-                                <TableCell>Delete</TableCell>
+                                <TableCell> <b>Name</b> </TableCell>
+                                <TableCell> <b>Description</b>  </TableCell>
+                                <TableCell><b>Intro Date </b> </TableCell>
+                                <TableCell><b>GST </b></TableCell>
+                                <TableCell><b>Inventory </b></TableCell>
+                                <TableCell><b>Edit</b></TableCell>
+                                <TableCell><b>Delete</b> </TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>

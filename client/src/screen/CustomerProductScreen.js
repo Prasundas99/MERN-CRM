@@ -12,7 +12,7 @@ function ProductScreen() {
     return (
         <div className={classes.root}>
             <Dashboard />
-
+        
             <Customer />
                        
         </div>

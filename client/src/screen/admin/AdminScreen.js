@@ -4,7 +4,7 @@ import { useStyles } from '../../styles/Homestyle';
 function AdminScreen() {
     const classes = useStyles();
     return (
-        <div>
+        <div className={classes.root}>
             <AdminDashboard />
         
             

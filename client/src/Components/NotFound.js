@@ -1,11 +1,17 @@
 import React from 'react'
+import Container from '@material-ui/core/Container';
+
+import Typography from '@material-ui/core/Typography';
 
 function NotFound() {
     return (
-        <div>
-            <h1>404</h1>
-            <p>We are sorry but the page you are looking for does not exist....</p>
-        </div>
+        <>
+        <br /><br /><br /><br /><br /><br />
+        <Container maxWidth="md">
+            <Typography variant='h2'>Error 404 :(</Typography>
+            <Typography variant='h6'>We are sorry but the page you are looking for does not exist....</Typography>
+        </Container>
+        </>
     )
 }
 
