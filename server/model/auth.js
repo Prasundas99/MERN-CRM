@@ -15,6 +15,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  
+  isAdmin: {
+      type:Boolean,
+      default: false,
+     },
 });
 
 userSchema.methods.checkPassword = async function (enteredPassword) {
