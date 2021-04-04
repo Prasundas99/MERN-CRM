@@ -1,5 +1,6 @@
 import axios from "axios";
 const API = process.env.REACT_APP_API;
+console.log(API);
 
 export const signup = async (user) => {
   try {
@@ -7,6 +8,7 @@ export const signup = async (user) => {
       "Content-Type": "application/json",
     };
     const { data } = await axios.post(`${API}/user/signup`, user, config);
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

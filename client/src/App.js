@@ -3,29 +3,27 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 
 //Utils
-import ScrollToTop from './Components/ScrollToTop';
+import ScrollToTop from "./Components/ScrollToTop";
 
 //Components imports
 import Nav from "./Components/Navbar/Navbar";
 import Home from "./screen/Home";
 import ProductScreen from "./screen/ProductScreen";
-import CustomerScreen from "./screen/CustomerProductScreen"
+import CustomerScreen from "./screen/CustomerProductScreen";
 import AdminScreen from "./screen/admin/AdminScreen";
-import AdminCustomer from './screen/admin/AdminCustomer';
-import AdminProduct from './screen/admin/AdminProduct';
+import AdminCustomer from "./screen/admin/AdminCustomer";
+import AdminProduct from "./screen/admin/AdminProduct";
 import NotFound from "./Components/NotFound";
-import AdminAllocationScreen from './screen/admin/AdminAllocationScreen';
+import AdminAllocationScreen from "./screen/admin/AdminAllocationScreen";
 import LogIn from "./screen/auth/Login";
 import SignIn from "./screen/auth/SignIn";
-import ForgetPass from './screen/auth/ForgetPass';
-import NewPass from './screen/auth/NewPass';
+import ForgetPass from "./screen/auth/ForgetPass";
+import NewPass from "./screen/auth/NewPass";
 import Customer from "./screen/Forms/Create/Customer";
 import Product from "./screen/Forms/Create/Product";
 import Allocation from "./screen/Forms/Create/Allocation";
 
-
 function App() {
-
   const theme = createMuiTheme({
     typography: {
       fontFamily: '"Segoe UI "',
@@ -36,67 +34,67 @@ function App() {
     },
   });
 
+  console.log(process.env.REACT_APP_API);
 
-  
   return (
     <MuiThemeProvider theme={theme}>
-       <Router>
+      <Router>
         <Nav />
         <ScrollToTop>
           <Switch>
             <Route exact path="/">
-              <Home />        
+              <Home />
             </Route>
             <Route exact path="/ProductList">
-                <ProductScreen />     
+              <ProductScreen />
             </Route>
 
             <Route exact path="/Allocation">
-                  <CustomerScreen />
+              <CustomerScreen />
             </Route>
 
             <Route exact path="/Admin">
-                  <AdminScreen />
+              <AdminScreen />
             </Route>
             <Route exact path="/AdminCustomer">
-                  <AdminCustomer />
+              <AdminCustomer />
             </Route>
             <Route exact path="/AdminProduct">
-                  <AdminProduct />
+              <AdminProduct />
             </Route>
 
             <Route exact path="/AdminAllocation">
-                <AdminAllocationScreen />
+              <AdminAllocationScreen />
             </Route>
 
             <Route exact path="/LogIn">
-                <LogIn />
+              <LogIn />
             </Route>
 
             <Route exact path="/SignUp">
-                <SignIn />
+              <SignIn />
             </Route>
             <Route exact path="/ForgotPass">
-                <ForgetPass />
+              <ForgetPass />
             </Route>
             <Route exact path="/NewPass">
-                <NewPass />
+              <NewPass />
             </Route>
             <Route exact path="/NewCustomer">
-               <Customer />
+              <Customer />
             </Route>
             <Route exact path="/NewProduct">
-                <Product />
+              <Product />
             </Route>
             <Route exact path="/NewAllocation">
-                <Allocation />
+              <Allocation />
             </Route>
 
             <Route path="" component={NotFound} />
           </Switch>
         </ScrollToTop>
       </Router>
-      </MuiThemeProvider>
+    </MuiThemeProvider>
   );
 }
 

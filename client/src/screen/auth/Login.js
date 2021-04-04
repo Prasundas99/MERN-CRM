@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -15,8 +15,24 @@ import Container from "@material-ui/core/Container";
 
 import { useStyles } from "../../styles/loginPageStyling";
 
+// API connection
+import { login } from "./helper/auth";
+
 export default function LogIn() {
   const classes = useStyles();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginUser = (e) => {
+    e.preventDefault();
+
+    const data = login({
+      email: email,
+      password: password,
+    });
+    console.log(data);
+  };
 
   return (
     <Container component="main" maxWidth="xs" className={classes.root}>
@@ -32,6 +48,8 @@ export default function LogIn() {
               margin="normal"
               required
               fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               id="email"
               label="Email Address"
               name="email"
@@ -43,6 +61,8 @@ export default function LogIn() {
               margin="normal"
               required
               fullWidth
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               name="password"
               label="Password"
               type="password"
