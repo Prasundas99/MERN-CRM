@@ -1,57 +1,75 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import React, { useState } from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
-import { useStyles } from '../../styles/loginPageStyling';
+import { useStyles } from "../../styles/loginPageStyling";
 
+// API connection
+import { resetPassword } from "./helper/auth";
 
-export default function NewPass() {
+export default function NewPass({ match }) {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const accessToken = match.params.accessToken;
+
+  const passwordReset = (e) => {
+    e.preventDefault();
+    const { data } = resetPassword({ password: password }, accessToken);
+    console.log(data);
+  };
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs" className={classes.root}>
-      
-      <Paper className={classes.paper} elevation = {5}>
-      <div >
-        <form className={classes.form} noValidate>
-        <Typography align='left' variant='h6'>Add your Neww Password</Typography>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="newPass"
-            label="New PassWord"
-            name="New Password"
-            autoFocus
-          />
+      <Paper className={classes.paper} elevation={5}>
+        <div>
+          <form className={classes.form} noValidate>
+            <Typography align="left" variant="h6">
+              Add your Neww Password
+            </Typography>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              id="newPass"
+              label="New PassWord"
+              name="New Password"
+              autoFocus
+            />
 
-        <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="conformnewPass"
-            label="Re-enter New PassWord"
-            name="Re-enter New Password"
-            autoFocus
-          />
-         
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Submit
-          </Button>
-        </form>
-      </div>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              id="conformnewPass"
+              label="Re-enter New PassWord"
+              name="Re-enter New Password"
+              autoFocus
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={passwordReset}
+            >
+              Submit
+            </Button>
+          </form>
+        </div>
       </Paper>
     </Container>
   );

@@ -77,7 +77,7 @@ function App() {
             <Route exact path="/ForgotPass">
               <ForgetPass />
             </Route>
-            <Route exact path="/NewPass">
+            <Route exact path="/reset-password/:accessToken">
               <NewPass />
             </Route>
             <Route exact path="/NewCustomer">
