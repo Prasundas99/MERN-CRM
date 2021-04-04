@@ -16,6 +16,11 @@ import NotFound from "./Components/NotFound";
 import AdminAllocationScreen from './screen/admin/AdminAllocationScreen';
 import LogIn from "./screen/auth/Login";
 import SignIn from "./screen/auth/SignIn";
+import ForgetPass from './screen/auth/ForgetPass';
+import NewPass from './screen/auth/NewPass';
+import Customer from "./screen/Forms/Create/Customer";
+import Product from "./screen/Forms/Create/Product";
+import Allocation from "./screen/Forms/Create/Allocation";
 
 
 function App() {
@@ -58,6 +63,21 @@ function App() {
 
             <Route exact path="/SignUp">
                 <SignIn />
+            </Route>
+            <Route exact path="/ForgotPass">
+                <ForgetPass />
+            </Route>
+            <Route exact path="/NewPass">
+                <NewPass />
+            </Route>
+            <Route exact path="/NewCustomer">
+               <Customer />
+            </Route>
+            <Route exact path="/NewProduct">
+                <Product />
+            </Route>
+            <Route exact path="/NewAllocation">
+                <Allocation />
             </Route>
 
             <Route path="" component={NotFound} />
