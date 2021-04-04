@@ -6,6 +6,9 @@ import CustomerRouter from "./routes/customerRoutes.js";
 import ProductRouter from "./routes/productRoute.js";
 import AllocationRoutes from './routes/allocationRoutes.js';
 
+import { NotFound, errorhandler } from "./middleware/errorHandling.js";
+
+
 import mongooseConnection from "./config/db.js";
 
 import cors from "cors";
@@ -33,7 +36,9 @@ app.use("/Customer",CustomerRouter);
 app.use("/Product",ProductRouter);
 app.use("/Allocation", AllocationRoutes);
 
-
+// error handling
+app.use(NotFound);
+app.use(errorhandler);
 
 //Server Listen
 const PORT = 5000 || process.env.PORT;
