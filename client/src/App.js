@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from './Components/ScrollToTop';
 
 //Components imports
-import Nav from "./Components/navbar/Navbar";
+import Nav from "./Components/Navbar/Navbar";
 import Home from "./screen/Home";
 import ProductScreen from "./screen/ProductScreen";
 import CustomerScreen from "./screen/CustomerProductScreen"
