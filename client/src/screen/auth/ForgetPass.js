@@ -17,18 +17,21 @@ import { useStyles } from "../../styles/loginPageStyling";
 
 // API connection
 import { emailVerify } from "./helper/auth";
+import { useHistory } from "react-router";
 
-export default function ForgetPass({ history }) {
+export default function ForgetPass() {
   const [email, setEmail] = useState("");
 
-  const verifyEmail = (e) => {
+  const history = useHistory();
+
+  const verifyEmail = async (e) => {
     e.preventDefault();
 
-    const data = emailVerify({
+    const { accessToken } = await emailVerify({
       email: email,
     });
-    history.push(`/reset-password/${data.accessToken}`);
-    console.log(data);
+    history.push(`/reset-password/${accessToken}`);
+    console.log(accessToken);
   };
 
   const classes = useStyles();

@@ -3,7 +3,7 @@ import { generateToken } from "../utils/generateToken.js";
 import { v4 as uuidv4 } from "uuid";
 import resetPasswordModel from "../model/resetPasswordModel.js";
 import resetPassword_mailer from "../mailers/forgetPassword_mailer.js";
-
+import bcrypt from "bcrypt";
 
 // @purpose: Register new user and get token
 // @route:   POST /register
@@ -90,23 +90,37 @@ export const passwordReset = async (req, res, next) => {
   const { password } = req.body;
   try {
     const resetPasswordToken = await resetPasswordModel.findOne({
-      accessToken: req.params.accessToken,
+      accessToken: req.params.token,
     });
-
+    console.log(resetPasswordToken);
     if (resetPasswordToken.isValid) {
       const user = await (
         await Auth.findOne({ _id: resetPasswordToken.user })
       ).populate("User");
       if (user) {
-        user.password = password;
-        user.save();
-        res.status(200);
-        res.json({
-          message: `${user.name} Password Reset successfully`,
-        });
+        if (user && !(await user.checkPassword(password))) {
+          user.password = password;
+          user.save();
 
-        // delete reset password token
-        await resetPasswordToken.deleteOne({ user: user._id });
+          // delete reset password token
+          const resetPasswordInvalid = await resetPasswordModel.findOneAndUpdate(
+            {
+              accessToken: req.params.token,
+            },
+            { isValid: false },
+            { new: true }
+          );
+
+          res.status(200);
+          res.json({
+            message: `${user.name} Password Reset successfully`,
+            resetPasswordToken: resetPasswordInvalid,
+          });
+        } else {
+          res.status(404);
+          const err = new Error("Password cannot be same");
+          next(err);
+        }
       } else {
         res.status(404);
         const err = new Error("User not Found");

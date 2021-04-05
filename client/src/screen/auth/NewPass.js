@@ -10,12 +10,14 @@ import { useStyles } from "../../styles/loginPageStyling";
 
 // API connection
 import { resetPassword } from "./helper/auth";
+import { useParams } from "react-router";
 
-export default function NewPass({ match }) {
+export default function NewPass() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const accessToken = match.params.accessToken;
+  const params = useParams();
+  const accessToken = params.accessToken;
 
   const passwordReset = (e) => {
     e.preventDefault();

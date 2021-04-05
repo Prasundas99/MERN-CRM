@@ -22,9 +22,9 @@ Content-Type: application/json
 
 
 ########  reset password   #########
-POST http://localhost:5000/user/reset-password/5fd82c40-0bae-4442-8fef-630de800169a
+POST http://localhost:5000/user/reset-password/3729e627-5b97-4744-a73d-ddf2665c8cf4
 Content-Type: application/json
 
 {
-      "password": "user12345"
+      "password": "user1234"
 }
