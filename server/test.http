@@ -28,3 +28,23 @@ Content-Type: application/json
 {
       "password": "user1234"
 }
+
+
+#######  get product  #######
+GET http://localhost:5000/Product
+
+
+####### POST product  ######
+POST http://localhost:5000/Product
+Content-Type: application/json
+
+{
+  "product_name": "Table",
+  "product_description": "bad product",
+  "product_price": "100paisa",
+  "product_intro_date": "02/03/2000",
+  "GST": "22",
+  "product_inventry_flag": false
+}
+
+

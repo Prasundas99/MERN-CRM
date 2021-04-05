@@ -23,6 +23,8 @@ import Customer from "./screen/Forms/Create/Customer";
 import Product from "./screen/Forms/Create/Product";
 import Allocation from "./screen/Forms/Create/Allocation";
 
+import CreateProduct from "./screen/Forms/Create/Product";
+
 function App() {
   const theme = createMuiTheme({
     typography: {
@@ -88,6 +90,10 @@ function App() {
             </Route>
             <Route exact path="/NewAllocation">
               <Allocation />
+            </Route>
+
+            <Route exact path="/CreateProduct">
+              <CreateProduct />
             </Route>
 
             <Route path="" component={NotFound} />
