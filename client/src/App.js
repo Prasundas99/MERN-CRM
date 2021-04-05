@@ -9,7 +9,7 @@ import ScrollToTop from "./Components/ScrollToTop";
 import Nav from "./Components/Navbar/Navbar";
 import Home from "./screen/Home";
 import ProductScreen from "./screen/ProductScreen";
-import CustomerScreen from "./screen/CustomerProductScreen";
+import CustomerScreen from "./screen/AllocationScreen";
 import AdminScreen from "./screen/admin/AdminScreen";
 import AdminCustomer from "./screen/admin/AdminCustomer";
 import AdminProduct from "./screen/admin/AdminProduct";

@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-
-
 //model Product
 var producttableSchema = new Schema({
-  product_Id: String,
   product_name: String,
   product_description: String,
   product_price: String,
@@ -15,6 +12,6 @@ var producttableSchema = new Schema({
 });
 
 //create model for Product
-var Product = mongoose.model("product", producttableSchema)
+var Product = mongoose.model("product", producttableSchema);
 
 export default Product;

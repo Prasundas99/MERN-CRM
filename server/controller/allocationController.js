@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
-import  allocation  from "../model/CustomerProduct.js";
-
+import allocation from "../model/CustomerProduct.js";
 
 //Read
 export const getAllocation = async (req, res) => {
   try {
-    const Allocation = await allocation.find().poppulate("Customer").poppulate("product");
+    const Allocation = await allocation
+      .find()
+      .populate("Customer")
+      .populate("Product");
     res.status(200).json(Allocation);
   } catch (error) {
     console.log(error);
@@ -13,14 +15,13 @@ export const getAllocation = async (req, res) => {
   }
 };
 
-
 //Create
 export const createAllocation = async (req, res) => {
   const Allocation = req.body;
   console.log(Allocation);
   const newAllocation = new allocation({
-      Customer: req.body.CustomerId,
-      Product: req.body.productId
+    Customer: req.body.customerId,
+    Product: req.body.productId,
   });
   try {
     await newAllocation.save();
@@ -30,12 +31,10 @@ export const createAllocation = async (req, res) => {
   }
 };
 
-
 //Update
 export const updateAllocation = async (req, res) => {
   const { id: _id } = req.params;
   const Allocation = req.body;
-
 
   const updatedAllocation = await allocation.findByIdAndUpdate(
     _id,
@@ -45,7 +44,6 @@ export const updateAllocation = async (req, res) => {
 
   res.status(200).json(updatedAllocation);
 };
-
 
 //Delete
 export const deleteAllocation = async (req, res) => {

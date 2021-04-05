@@ -66,3 +66,26 @@ Content-Type: application/json
 }
 
 
+#########  DELETE customer  ###########
+DELETE http://localhost:5000/Customer/606b162efdc0b54e64bf859e
+
+
+
+###############   Allocation   ############
+
+#########   get allocation of customer and product  #######
+GET http://localhost:5000/Allocation
+
+
+
+#######   post allocation of customer and product   #############
+POST  http://localhost:5000/Allocation
+Content-Type: application/json
+
+{
+      "customerId": "606b12a1fdc0b54e64bf859d",
+      "productId": "606b035cb5186e10e8f72709"
+}
+
+######  delete allocation of customers and products  ########
+DELETE http://localhost:5000/Allocation/606b193a3b696942e0a2d3b1

@@ -6,15 +6,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Button from "@material-ui/core/Button";
 
 //Styles
-import { useStyles } from "../../styles/Homestyle";
+import { useStyles } from "../styles/Homestyle";
 
-//React components
-import { Link } from "react-router-dom";
-
-function AdminAllocation({ allocation }) {
+function Customer({ allocation }) {
   const classes = useStyles();
   return (
     <div>
@@ -22,10 +18,6 @@ function AdminAllocation({ allocation }) {
         Customers-Product Allocation
       </Typography>
       <br />
-      <Button variant="contained" color="primary">
-        Add New
-      </Button>
-      <br /> <br />
       <Paper elevation={3} className={classes.PaperCustomers}>
         <TableContainer>
           <Table
@@ -36,16 +28,11 @@ function AdminAllocation({ allocation }) {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <b>Cuustomer Name </b>
+                  <b>Customer Name</b>
                 </TableCell>
                 <TableCell>
+                  {" "}
                   <b>Product Name</b>{" "}
-                </TableCell>
-                <TableCell>
-                  <b>Edit </b>{" "}
-                </TableCell>
-                <TableCell>
-                  <b>Delete </b>{" "}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -59,13 +46,6 @@ function AdminAllocation({ allocation }) {
                     <TableCell component="th" scope="row">
                       {row.Product.product_name}
                     </TableCell>
-                    <TableCell>
-                      <Link to="Update">Edit</Link>
-                    </TableCell>
-                    <TableCell>
-                      {" "}
-                      <Link to="Delete  ">Delete</Link>
-                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
@@ -76,4 +56,4 @@ function AdminAllocation({ allocation }) {
   );
 }
 
-export default AdminAllocation;
+export default Customer;
