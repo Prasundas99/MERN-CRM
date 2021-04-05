@@ -39,13 +39,16 @@ POST http://localhost:5000/Product
 Content-Type: application/json
 
 {
-  "product_name": "Table",
-  "product_description": "bad product",
-  "product_price": "100paisa",
-  "product_intro_date": "02/03/2000",
-  "GST": "22",
-  "product_inventry_flag": false
+  "product_name": "Flower Pot",
+  "product_description": "noice product",
+  "product_price": "100000paisa",
+  "product_intro_date": "01/03/2000",
+  "GST": "1100",
+  "product_inventry_flag": true
 }
+
+###########  DELETE product ######
+DELETE http://localhost:5000/Product/606b1cd73b696942e0a2d3b2
 
 
 
@@ -83,8 +86,8 @@ POST  http://localhost:5000/Allocation
 Content-Type: application/json
 
 {
-      "customerId": "606b12a1fdc0b54e64bf859d",
-      "productId": "606b035cb5186e10e8f72709"
+      "customerId": "606b128bfdc0b54e64bf859c",
+      "productId": "606b032ab5186e10e8f72707"
 }
 
 ######  delete allocation of customers and products  ########
