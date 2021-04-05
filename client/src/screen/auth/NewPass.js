@@ -27,6 +27,8 @@ export default function NewPass() {
     resetPassword({ password: password }, accessToken)
       .then((data) => {
         console.log(data);
+        alert(data.message);
+        history.push("/login");
       })
       .catch((err) => {
         alert(err.message);

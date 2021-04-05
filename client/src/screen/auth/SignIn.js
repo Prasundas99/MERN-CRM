@@ -14,6 +14,7 @@ import { useStyles } from "../../styles/signupPageStyling";
 
 // API connection
 import { signup } from "./helper/auth";
+import { useHistory } from "react-router";
 
 export default function SignIn() {
   const classes = useStyles();
@@ -23,6 +24,8 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const history = useHistory();
+
   const signUpUser = (e) => {
     e.preventDefault();
 
@@ -30,8 +33,15 @@ export default function SignIn() {
       name: fName + " " + lName,
       email: email,
       password: password,
-    });
-    console.log(data);
+    })
+      .then((data) => {
+        console.log(data);
+        history.push("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
   };
 
   return (

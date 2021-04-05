@@ -11,7 +11,8 @@ export const signup = async (user) => {
     console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    const err = error && error.response && error.response.data;
+    throw new Error(`${err.message}`);
   }
 };
 
@@ -24,7 +25,8 @@ export const login = async (user) => {
     console.log(data);
     localStorage.setItem("userCreds", JSON.stringify(data));
   } catch (error) {
-    console.log(error);
+    const err = error && error.response && error.response.data;
+    throw new Error(`${err.message}`);
   }
 };
 
@@ -48,7 +50,8 @@ export const emailVerify = async (email) => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    const err = error && error.response && error.response.data;
+    throw new Error(`${err.message}`);
   }
 };
 

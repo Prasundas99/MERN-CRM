@@ -27,11 +27,17 @@ export default function ForgetPass() {
   const verifyEmail = async (e) => {
     e.preventDefault();
 
-    const { accessToken } = await emailVerify({
+    await emailVerify({
       email: email,
-    });
-    history.push(`/reset-password/${accessToken}`);
-    console.log(accessToken);
+    })
+      .then((data) => {
+        console.log(data.accessToken);
+        history.push(`/reset-password/${data.accessToken}`);
+      })
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
   };
 
   const classes = useStyles();

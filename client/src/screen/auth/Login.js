@@ -17,9 +17,11 @@ import { useStyles } from "../../styles/loginPageStyling";
 
 // API connection
 import { login } from "./helper/auth";
+import { useHistory } from "react-router";
 
 export default function LogIn() {
   const classes = useStyles();
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,8 +32,15 @@ export default function LogIn() {
     const data = login({
       email: email,
       password: password,
-    });
-    console.log(data);
+    })
+      .then((data) => {
+        console.log(data);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
   };
 
   return (
