@@ -10,27 +10,6 @@ import TableRow from "@material-ui/core/TableRow";
 //Styles
 import { useStyles } from "../styles/Homestyle";
 
-//React components
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData(
-    "Web Development",
-    "Full stck web development for all",
-    "10th March 2020",
-    "18%",
-    "True"
-  ),
-  createData(
-    "App Developmet",
-    "Full stck web development for all",
-    "10th March 2020",
-    "18%",
-    "True"
-  ),
-];
 
 function Product({ products }) {
   const classes = useStyles();
