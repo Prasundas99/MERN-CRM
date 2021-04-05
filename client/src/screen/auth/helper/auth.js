@@ -65,7 +65,9 @@ export const resetPassword = async (modifiedPassword, accessToken) => {
     console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    const err = error && error.response && error.response.data;
+    console.log(err);
+    throw new Error(`${err.message}`);
   }
 };
 

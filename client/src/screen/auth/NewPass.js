@@ -10,19 +10,29 @@ import { useStyles } from "../../styles/loginPageStyling";
 
 // API connection
 import { resetPassword } from "./helper/auth";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 export default function NewPass() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const params = useParams();
+  const history = useHistory();
   const accessToken = params.accessToken;
 
-  const passwordReset = (e) => {
+  const passwordReset = async (e) => {
     e.preventDefault();
-    const { data } = resetPassword({ password: password }, accessToken);
-    console.log(data);
+
+    //reset password
+    resetPassword({ password: password }, accessToken)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        alert(err.message);
+        console.log(err.message);
+        history.goBack();
+      });
   };
   const classes = useStyles();
 
