@@ -127,9 +127,9 @@ export const passwordReset = async (req, res, next) => {
         next(err);
       }
     } else {
-      res.json({
-        message: `Token expired`,
-      });
+      res.status(404);
+      const err = new Error("Token expired");
+      next(err);
     }
   } catch (error) {
     res.status(404);
