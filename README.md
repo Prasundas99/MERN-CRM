@@ -1,4 +1,4 @@
-# CRM-IEMLABS
+# MERN-CRM
 
 
 reference github projects:
